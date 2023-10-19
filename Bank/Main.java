@@ -33,5 +33,6 @@ public class Main {
             }
             n = input.next();
         }
+        input.close();
     }
 }
