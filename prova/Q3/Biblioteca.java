@@ -67,5 +67,5 @@ public class Biblioteca {
         }
         return autoresArray;
     }
-    input.close();
+    
 }
