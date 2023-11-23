@@ -25,5 +25,6 @@ public class Main {
         }else{
             System.out.println(pais2.toString());
         }
+        input.close();
     }
 }

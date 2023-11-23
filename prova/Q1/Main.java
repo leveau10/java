@@ -10,5 +10,6 @@ public class Main{
         b = input.nextInt();
         int media = (((a*2) + (b*3)) / 5);
         System.out.println("Média de " + a + " e " + b + " : " + media);
+        input.close();
     }
 }

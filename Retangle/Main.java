@@ -1,6 +1,5 @@
 package Retangle;
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -11,5 +10,6 @@ public class Main {
         System.out.println("Area: " + ret.calcArea());
         System.out.println("Diagonal: " + ret.calcDiagonal());
         System.out.println("Atributos: " + ret.toString());
+        input.close();
     }
 }
