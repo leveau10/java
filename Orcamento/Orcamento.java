@@ -1,6 +1,7 @@
 package Orcamento;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Orcamento {
@@ -11,6 +12,7 @@ public class Orcamento {
     Orcamento(String cliente, LocalDate data){
         this.cliente = cliente;
         this.data = data;
+        this.itens = new ArrayList<>();
     }
 
     public String getCliente() {
@@ -30,12 +32,14 @@ public class Orcamento {
     }
 
     public void inserirItem(Item item){
-        
+        itens.add(item);
     }
 
     public double getTotal(){
         double total = 0;
-
+        for (Item item : itens) {
+            total += item.getPreco();
+        }
         return total;
     }
 }

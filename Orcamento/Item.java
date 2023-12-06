@@ -1,8 +1,8 @@
 package Orcamento;
 
 public abstract class Item {
-    private String descricao;
-    private int qtd;
+    protected String descricao;
+    protected int qtd;
 
     Item(String descricao, int qtd){
         this.descricao = descricao;

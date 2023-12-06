@@ -3,14 +3,14 @@ package Orcamento;
 public class Servico extends Item{
     private int tempo;
     private int valorHora = 10;
-    Servico(String d, int t, int q){
-        super(d, q);
-        this.tempo = t;
+    Servico(String descricao, int qtd, int tempo){
+        super(descricao, qtd);
+        this.tempo = tempo;
     }
 
     @Override
     public double getPreco() {
-        return valorHora * tempo;
+        return this.qtd *  (this.valorHora/(60.0/this.tempo)); //ajeitar fórmula
     }
 
     @Override
@@ -18,6 +18,4 @@ public class Servico extends Item{
         
         return "stringServico";
     }
-
-
 }
