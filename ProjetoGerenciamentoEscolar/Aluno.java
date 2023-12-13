@@ -11,4 +11,8 @@ public class Aluno {
     public String getNomeAluno(){
         return this.name;
     }
+
+    public String getMatricula(){
+        return this.matricula;
+    }
 }

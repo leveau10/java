@@ -5,15 +5,35 @@ import java.util.Map;
 
 public class Disciplina {
     private String name;
+    private Professor professor;
     private Map<Aluno, Notas> map;
 
-    public Disciplina(String name){
+    public Disciplina(String name, Professor professor){
         this.name = name;
+        this.professor = professor;
         this.map = new HashMap<>();
     }
    
+    public Disciplina(String name){
+        this.name = name;
+        this.professor = null;
+        this.map = new HashMap<>();
+    }
+
     public void setName(String name){
         this.name = name;
+    }
+    
+    public String getName(){
+        return this.name;
+    }  
+
+    public void setProfessor(Professor professor){
+        this.professor = professor;
+    }
+
+     public Professor getProfessor(){
+        return this.professor;
     }
 
     public boolean isPresent(Aluno aluno){
@@ -30,9 +50,6 @@ public class Disciplina {
         this.map.remove(aluno);
     }
     
-    public String getName(){
-        return this.name;
-    }  
 
     public Notas getNotas(Aluno aluno){
         return map.get(aluno);

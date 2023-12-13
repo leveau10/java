@@ -11,6 +11,7 @@ public class SistemaEscolar {
         this.professores = new ArrayList<>();
         this.disciplinas = new ArrayList<>();
     }
+    
     public void inserirDisciplina(Disciplina disciplina){
         disciplinas.add(disciplina);
     }
@@ -28,7 +29,9 @@ public class SistemaEscolar {
     }
 
     public String getBoletim(Aluno aluno){
-        String notasAluno = "Notas de " + aluno.getNomeAluno() + " \n";
+        String notasAluno = "Boletim  \n";
+        notasAluno += "Aluno: " + aluno.getNomeAluno() + " \n";
+        notasAluno += "Matrícula " + aluno.getMatricula() + " \n";
         notasAluno +=  "_____________________________ \n";
         
         for (Disciplina disciplina : disciplinas) {
@@ -36,12 +39,16 @@ public class SistemaEscolar {
                 notasAluno += "-Disciplina: " + disciplina.getName() + "\n"; 
                 notasAluno += "   -Av1: " + disciplina.getNotas(aluno).getAvaliacaoUm()  +"\n";
                 notasAluno += "   -Av2: " + disciplina.getNotas(aluno).getAvaliacaoDois()+"\n";
-                notasAluno += " -Média: " + disciplina.getMedia(aluno) +"\n";
+                notasAluno += " -Média Parcial: " + disciplina.getMedia(aluno) +"\n";
                     if (disciplina.getMedia(aluno) >=60) {
                         notasAluno += "   -AvFinal: " + "0"+" \n";
                     }else{
                         notasAluno += "   -AvFinal: " + disciplina.getNotas(aluno).getAvaliacaoFinal() +" \n";
-                        notasAluno += " -Média Final: " + disciplina.getMediaFinal(aluno) +" \n";
+                        if (disciplina.getMedia(aluno) > disciplina.getMediaFinal(aluno)) {
+                            notasAluno += " -Média Final: " + disciplina.getMedia(aluno) +" \n";
+                        }else{
+                            notasAluno += " -Média Final: " + disciplina.getMediaFinal(aluno) +" \n";
+                        }
                     }
                 if (disciplina.getMedia(aluno) >= 60 || disciplina.getMediaFinal(aluno) >= 60) {
                     notasAluno += " Situação: APROVADO \n";
@@ -50,11 +57,8 @@ public class SistemaEscolar {
                 }
                 notasAluno += " -----------------------\n";
             }
-
         }
         return notasAluno;
     }
-
-    
 }
 
