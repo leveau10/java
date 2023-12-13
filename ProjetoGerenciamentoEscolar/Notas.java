@@ -3,6 +3,11 @@ package ProjetoGerenciamentoEscolar;
 public class Notas {
     private Integer avaliacaoUm, avaliacaoDois, avaliacaoFinal;
 
+    public Notas(Integer avaliacaoUm, Integer avaliacaoDois){
+        this.avaliacaoUm = avaliacaoUm;
+        this.avaliacaoDois = avaliacaoDois;
+        this.avaliacaoFinal = null;
+    }
     public void setAvaliacaoUm(Integer avaliacaoUm) {
         this.avaliacaoUm = avaliacaoUm;
     }

@@ -27,13 +27,31 @@ public class SistemaEscolar {
         professores.remove(professor);
     }
 
-    public String getNotas(Aluno aluno){
-        String notasAluno = "Notas de " + aluno.getNomeAluno() + " | ";
+    public String getBoletim(Aluno aluno){
+        String notasAluno = "Notas de " + aluno.getNomeAluno() + " \n";
+        notasAluno +=  "_____________________________ \n";
+        
         for (Disciplina disciplina : disciplinas) {
-            notasAluno += "Nota Av1: ";
+            if (disciplina.isPresent(aluno)) {
+                notasAluno += "-Disciplina: " + disciplina.getName() + "\n"; 
+                notasAluno += "   -Av1: " + disciplina.getNotas(aluno).getAvaliacaoUm()  +"\n";
+                notasAluno += "   -Av2: " + disciplina.getNotas(aluno).getAvaliacaoDois()+"\n";
+                notasAluno += " -Média: " + disciplina.getMedia(aluno) +"\n";
+                    if (disciplina.getMedia(aluno) >=60) {
+                        notasAluno += "   -AvFinal: " + "0"+" \n";
+                    }else{
+                        notasAluno += "   -AvFinal: " + disciplina.getNotas(aluno).getAvaliacaoFinal() +" \n";
+                        notasAluno += " -Média Final: " + disciplina.getMediaFinal(aluno) +" \n";
+                    }
+                if (disciplina.getMedia(aluno) >= 60 || disciplina.getMediaFinal(aluno) >= 60) {
+                    notasAluno += " Situação: APROVADO \n";
+                }else{
+                    notasAluno += " Situação: REPROVADO \n";
+                }
+                notasAluno += " -----------------------\n";
+            }
 
         }
-
         return notasAluno;
     }
 

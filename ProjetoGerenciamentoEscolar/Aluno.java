@@ -1,7 +1,5 @@
 package ProjetoGerenciamentoEscolar;
 
-import java.util.List;
-
 public class Aluno {
     private String name, matricula;
 
