@@ -6,7 +6,7 @@ public class Notas {
     public Notas(Integer avaliacaoUm, Integer avaliacaoDois){
         this.avaliacaoUm = avaliacaoUm;
         this.avaliacaoDois = avaliacaoDois;
-        this.avaliacaoFinal = null;
+        this.avaliacaoFinal = 0;
     }
     public void setAvaliacaoUm(Integer avaliacaoUm) {
         this.avaliacaoUm = avaliacaoUm;

@@ -6,10 +6,12 @@ import java.util.List;
 public class SistemaEscolar {
     private List<Professor> professores;
     private List<Disciplina> disciplinas;
+    private List<Aluno> alunos;
 
     public SistemaEscolar(){
         this.professores = new ArrayList<>();
         this.disciplinas = new ArrayList<>();
+        this.alunos = new ArrayList<>();
     }
     
     public void inserirDisciplina(Disciplina disciplina){
@@ -26,6 +28,44 @@ public class SistemaEscolar {
 
     public void removeProfessor(Professor professor){
         professores.remove(professor);
+    }
+
+    public void inserirAluno(Aluno aluno){
+        alunos.add(aluno);
+    }
+
+    public void removerAluno(Aluno aluno){
+        alunos.remove(aluno);
+    }
+
+    public Aluno getAluno(String matriculaAluno){
+        for(Aluno aluno : alunos){
+            return aluno;
+        }
+        return null;
+    }
+
+    public Disciplina getDisciplina(String nomeDisciplina){
+        for(Disciplina disciplina : disciplinas){
+            return disciplina;
+        }
+        return null;
+    }
+
+    public String listarAlunos(){
+        String listaAlunos  = "Alunos \n";
+        for(Aluno aluno : alunos){
+            listaAlunos += aluno.getNomeAluno() + "| " + aluno.getMatricula() + "\n";
+        }
+        return listaAlunos;
+    }
+
+    public String listarDisciplinas(){
+        String listaDisciplinas = "Disciplinas \n";
+        for(Disciplina disciplina : disciplinas){
+            listaDisciplinas += disciplina.getName() + "\n" ;
+        }
+        return listaDisciplinas;
     }
 
     public String getBoletim(Aluno aluno){
