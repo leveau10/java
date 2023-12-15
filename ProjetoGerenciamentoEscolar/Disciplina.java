@@ -75,25 +75,4 @@ public class Disciplina {
         Integer mediaFinal = (this.getMedia(aluno) + notas.getAvaliacaoFinal()) / 2;
         return mediaFinal;
     }
-
 }   
-    // private int getMediaFinal(){
-    //     int mediaFinal = (this.getMedia() + this.notas.getAvaliacaoFinal()) / 2 ;
-    //     return mediaFinal;
-    // }
-
-    // public boolean aprovado(){
-    //     if(this.getMedia() >= 60){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }
-
-    // public boolean aprovadoFinal(){
-    //     if (this.getMediaFinal() >= 60) {
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }

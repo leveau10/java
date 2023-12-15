@@ -14,6 +14,4 @@ public class Professor {
     public String getName() {
         return name;
     }
-
-
 }
