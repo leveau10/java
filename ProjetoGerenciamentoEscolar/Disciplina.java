@@ -32,7 +32,11 @@ public class Disciplina {
         this.professor = professor;
     }
 
-     public Professor getProfessor(){
+    public void removeProfessor(Professor professor){
+        this.professor = null;
+    }
+
+    public Professor getProfessor(){
         return this.professor;
     }
 

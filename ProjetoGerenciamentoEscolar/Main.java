@@ -25,8 +25,12 @@ public class Main {
       System.out.println("3 - Cadastrar Aluno");
       System.out.println("4 - Inserir Aluno em Disciplina");
       System.out.println("5 - Remover Aluno em Disciplina");
-      System.out.println("9 - Mostrar boletim de aluno");
-      System.out.println("10 - Sair do sistema");
+      System.out.println("6 - Atribuir Professor em Disciplina");
+      System.out.println("7 - Remover Professor em Disciplina");
+      System.out.println("8 - Adicionar notas em Disciplina");
+      System.out.println("9 - Alterar notas em Disciplina");
+      System.out.println("10 - Mostrar boletim de aluno");
+      System.out.println("11 - Sair do sistema");
       System.out.println("_______________________________________");
       controle = input.nextInt();
       if (controle == 1) {
@@ -66,20 +70,96 @@ public class Main {
          System.out.println("--------------------------");
          System.out.println("Informe a Disciplina:");
          String nomeDisciplina = input.nextLine();
-         System.out.println(nomeDisciplina);
 
 
          Notas notas = new Notas(0, 0);
          sistema.getDisciplina(nomeDisciplina).inserirAluno(sistema.getAluno(matriculaAluno), notas);
 
+         System.out.println("Aluno inserido com sucesso!");
 
-      }else if(controle == 9){
+      }else if(controle == 5){
          System.out.println(sistema.listarAlunos());
          System.out.println("--------------------------");
          System.out.println("Informe a matrícula do aluno:");input.nextLine();
          String matriculaAluno = input.nextLine();
 
-         sistema.getBoletim(sistema.getAluno(matriculaAluno));
+         System.out.println(sistema.listarDisciplinas());
+         System.out.println("--------------------------");
+         System.out.println("Informe a Disciplina:");
+         String nomeDisciplina = input.nextLine();
+
+         sistema.getDisciplina(nomeDisciplina).removerAluno(sistema.getAluno(matriculaAluno));
+
+         System.out.println("Aluno removido com sucesso!");
+      }else if(controle == 6){
+         System.out.println(sistema.listarProfessores());
+         System.out.println("--------------------------");
+         System.out.println("Informe o nome do Professor:");input.nextLine();
+         String nomeProfessor = input.nextLine();
+
+         System.out.println(sistema.listarDisciplinas());
+         System.out.println("--------------------------");
+         System.out.println("Informe a Disciplina:");
+         String nomeDisciplina = input.nextLine();
+
+         sistema.getDisciplina(nomeDisciplina).setProfessor(sistema.getProfessor(nomeProfessor));
+
+         System.out.println("Professor atribuído à disciplina com sucesso!");
+      }else if(controle == 7){
+         System.out.println(sistema.listarProfessores());
+         System.out.println("--------------------------");
+         System.out.println("Informe o nome do Professor:");input.nextLine();
+         String nomeProfessor = input.nextLine();
+
+         System.out.println(sistema.listarDisciplinas());
+         System.out.println("--------------------------");
+         System.out.println("Informe a Disciplina:");
+         String nomeDisciplina = input.nextLine();
+
+         sistema.getDisciplina(nomeDisciplina).removeProfessor(sistema.getProfessor(nomeProfessor));
+
+         System.out.println("Professor removido da disciplina com sucesso!");
+      }else if(controle == 8 || controle == 9){
+         System.out.println(sistema.listarAlunos());
+         System.out.println("--------------------------");
+         System.out.println("Informe a matrícula do aluno:");input.nextLine();
+         String matriculaAluno = input.nextLine();
+
+         System.out.println(sistema.listarDisciplinas());
+         System.out.println("--------------------------");
+         System.out.println("Informe a Disciplina:");
+         String nomeDisciplina = input.nextLine();
+
+         System.out.println("Informe a primeira nota entre 0 e 100:");
+         Integer nota1 = input.nextInt();
+         System.out.println("Informe a segunda nota entre 0 100:");
+         Integer nota2 = input.nextInt();
+
+         sistema.getDisciplina(nomeDisciplina).getNotas(sistema.getAluno(matriculaAluno)).setAvaliacaoUm(nota1);
+         sistema.getDisciplina(nomeDisciplina).getNotas(sistema.getAluno(matriculaAluno)).setAvaliacaoDois(nota2);
+
+         if (sistema.getDisciplina(nomeDisciplina).getMedia(sistema.getAluno(matriculaAluno)) < 60) {
+            System.out.println("O aluno não atingiu nota 60. Informe a nota da avaliação final:");
+            Integer notaFinal = input.nextInt();
+            sistema.getDisciplina(nomeDisciplina).getNotas(sistema.getAluno(matriculaAluno)).setAvaliacaoFinal(notaFinal);
+            if (sistema.getDisciplina(nomeDisciplina).getMediaFinal(sistema.getAluno(matriculaAluno)) < 60) {
+               System.out.println("O aluno não atingiu nota 60 e foi reprovado.");
+            }else{
+               System.out.println("Notas cadastradas com sucesso! O aluno foi aprovado.");
+            }
+         }else{
+            System.out.println("Notas cadastradas com sucesso! O aluno foi aprovado.");
+         }
+
+      }
+      else if(controle == 10){
+         
+         System.out.println(sistema.listarAlunos());
+         System.out.println("--------------------------");
+         System.out.println("Informe a matrícula do aluno:");input.nextLine();
+         String matriculaAluno = input.nextLine();
+
+         System.out.println(sistema.getBoletim(sistema.getAluno(matriculaAluno)));
       }else{
          System.out.println("Opção inválida! Tente novamente");
       }

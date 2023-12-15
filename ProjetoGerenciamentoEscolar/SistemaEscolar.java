@@ -37,19 +37,39 @@ public class SistemaEscolar {
     public void removerAluno(Aluno aluno){
         alunos.remove(aluno);
     }
-
+    public Professor getProfessor(String nomeProfessor){
+        for(Professor professor : professores){
+            if (professor.getName().equals(nomeProfessor)) {
+                return professor;
+            }
+        }
+        return null;
+    }
+    
     public Aluno getAluno(String matriculaAluno){
         for(Aluno aluno : alunos){
-            return aluno;
+            if (aluno.getMatricula().equals(matriculaAluno)) {
+                return aluno;
+            }
         }
         return null;
     }
 
     public Disciplina getDisciplina(String nomeDisciplina){
         for(Disciplina disciplina : disciplinas){
-            return disciplina;
+            if (disciplina.getName().equals(nomeDisciplina)) {
+                return disciplina;
+            }
         }
         return null;
+    }
+
+    public String listarProfessores(){
+        String listaProfessores = "Professores \n";
+        for(Professor professor : professores){
+            listaProfessores += professor.getName() + "| \n";
+        }
+        return listaProfessores;
     }
 
     public String listarAlunos(){
